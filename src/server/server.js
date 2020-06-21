@@ -1,5 +1,4 @@
 //setting up a server
-
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -15,34 +14,24 @@ const server = app.listen(port, listening);
 function listening(){
     console.log(`The server is running locally on port:${port}`);
 };/* 
-const projectData={};
-const weatherData = [];
+const projectData={};*/
 
-//POST ROUTE => app.js post data here and the callback function stores it at /add path
- app.post('/add', storeWeatherData);
-function storeWeatherData(req, res){
-    //console.log(req.body.name);
+const locationData = {};
+
+//POST ROUTE => app.js post data here and the callback function stores it at /addCoordinates path
+app.post('/addCoordinates',storeCoordinates)
+function storeCoordinates(req, res){
     newEntry = {
-            temp: req.body.temp,
-            pressure:req.body.pressure,
-            humidity:req.body.humidity,
-            temp_min:req.body.temp_min,
-            temp_max:req.body.temp_max,
-            name:req.body.name,
-            visibility:req.body.visibility,
-            timezone:req.body.timezone,
-            zip:req.body.zip
-    }        
-    weatherData.push(newEntry);
-    res.send(weatherData);
-    //console.log(weatherData);
+        longitude: req.body.longitude,
+        latitude: req.body.latitude,
+        city: req.body.city
+    }
+    locationData.push(newEntry)
+    res.send(locationData)
 }
 
 //GET ROUTE=> app.js get data from here
-
 app.get('/get', getData)
 function getData(req, res){
-    //console.log(projectData)
-    res.send(weatherData);
+    res.send(locationData)
 }
- */

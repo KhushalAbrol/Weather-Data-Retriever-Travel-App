@@ -1,5 +1,5 @@
 import { getWeatherBitData } from './js/weatherbit'
-
+import { getCoordinates} from './js/coordinates'
 
 
 
@@ -7,5 +7,6 @@ import { getWeatherBitData } from './js/weatherbit'
 
 
 export {
-    getWeatherBitData
+    getWeatherBitData,
+    getCoordinates
 }

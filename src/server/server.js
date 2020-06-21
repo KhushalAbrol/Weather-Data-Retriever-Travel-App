@@ -31,7 +31,29 @@ function storeCoordinates(req, res){
 }
 
 //GET ROUTE=> app.js get data from here
-app.get('/get', getData)
-function getData(req, res){
+app.get('/getLocation', getLocationData)
+function getLocationData(req, res){
     res.send(locationData)
+}
+
+
+const weatherData = {}
+
+app.post('/addWeatherData', storeWeatherData)
+function storeWeatherData(req, res){
+    newWeatherEntry = {
+    maxtemp:res.body.maxTemp,
+    mintemp:res.body.minTemp,
+    press:res.body.press,
+    snow:res.body.snowDepth,
+    cloudes:res.body.cloudes,
+    wind:res.body.windSpeed
+}
+    weatherData.push(newWeatherEntry)
+}
+
+//GET ROUTE=> app.js get data from here
+app.get('/getWeather', getWeatherData)
+function getWeatherData(req, res){
+    res.send(weatherData)
 }

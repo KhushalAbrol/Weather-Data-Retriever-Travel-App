@@ -19,8 +19,4 @@ function submit()
         })
 })
 
-getWeatherBitData(lan, lon){
-
-    
-
-}
+getWeatherBitData(lan, lon)

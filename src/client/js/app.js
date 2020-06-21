@@ -21,7 +21,6 @@ function submit()
 
 getWeatherBitData(lan, lon){
 
-    const weatherURL = weatherBaseURL+"lat="+lat+"&lon="+lon+"&key="+weatherAPIKey
-    getWeatherInfo(weatherURL)
+    
 
 }

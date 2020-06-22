@@ -32,9 +32,12 @@ function submit(){
         }})
 
     .then(function(){
-        
 //use lon and lat from above and date to call getWeatherData function to get weather Data of a perticular Date
-        getWeatherBitData(lan, lon, date)
+        Client.getWeatherBitData(lan, lon, date)
+    })
+
+    .then(function(){
+        Client.getImage(city)
     })
 
     .then(function(){

@@ -65,3 +65,10 @@ app.get('', getCoordinatesData)
 function getCoordinatesData(req, res){
     res.send(locationData)
 } */
+
+const imageData = {}
+app.post('/addImagerData', storeImageData)
+function storeImageData(req, res){
+    imageData.image = req.body.imageURL
+    console.log("Image Stored")
+}

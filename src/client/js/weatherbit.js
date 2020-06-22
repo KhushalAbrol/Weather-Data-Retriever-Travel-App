@@ -8,6 +8,7 @@ function getWeatherBitData(lat, lon, date){
     getWeatherInfo(weatherURL)
     //then print it on console for now...
     .then(function(weatherData){
+        
     console.log("Here is the weather data :"+weatherData);
 })}
 
@@ -22,14 +23,14 @@ const getWeatherInfo = async (url) =>{
         .then((weatherData) => {
             for(const i=0; i<16; i++){
                 //when data matched post data to server
-                if(date == data.data[i].valid_date)
+                if(weatherDate == data.data[i].valid_date)
                     postData('/addWeatherData', {
-                        maxtemp:data.data[i].high_temp,
-                        mintemp:data.data[i].low_temp,
-                        press:data.data[i].pres,
-                        snow:data.data[i].snow_depth,
-                        cloudes:data.data[i].clouds,
-                        wind:data.data[i].wind_spd
+                        maxtemp:weatherData.data[i].high_temp,
+                        mintemp:weatherData.data[i].low_temp,
+                        press:weatherData.data[i].pres,
+                        snow:weatherData.data[i].snow_depth,
+                        cloudes:weatherData.data[i].clouds,
+                        wind:weatherData.data[i].wind_spd
             })
         }
         //return weatherData;

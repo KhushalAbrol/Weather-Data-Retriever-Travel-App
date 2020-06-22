@@ -28,13 +28,15 @@ function storeCoordinates(req, res){
         city: req.body.city
     }
     locationData.push(newEntry)
-    res.send(locationData)
+    console.log("Location Coordinates Recived!")
+    //res.send(locationData)
 }
 
 //GET ROUTE=> app.js get data from here
 app.get('/getLocation', getLocationData)
 function getLocationData(req, res){
     res.send(locationData)
+    console.log("Location Coordinates Send!")
 }
 
 

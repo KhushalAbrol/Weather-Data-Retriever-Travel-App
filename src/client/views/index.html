@@ -2,24 +2,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Weather Journal</title>
-<!-- <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet"> -->
+<title>Travel App</title>
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
  <body>
   <div id = "app">
       <div class ="holder headline">
-        Weather Journal App
+        Travel App
       </div>
       <div id="main">
         <div class ="holder zip">
           <label for="zip">Enter Zipcode here:</label>
-          <input type="text" id="lon" placeholder="Please Enter lon Here">
-          <input type="text" id="lan" placeholder="Please Enter lan Code Here">
-        </div>
-        <div class ="holder feel">
-          <label for="feelings">How are you feeling today?</label>
-          <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here"></textarea>
+          <input type="text" id="city" placeholder="Please Enter City Here">
+          <input type="text" id="date" placeholder="YYYY-MM-DD">
         </div>
         <div class ="holder entry">
             <div class = "title">Most Recent Entry</div>
@@ -45,7 +41,7 @@
             </div>
         </div>
         <div class="but">
-          <button id="generate" type = "submit"> Get Weather Data </button>
+          <button id="generate" type = "submit"> Get Weather Detail </button>
         </div>
       </div>
   </div>

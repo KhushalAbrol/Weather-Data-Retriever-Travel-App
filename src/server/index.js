@@ -5,11 +5,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 const cors = require("cors");
-const { getCoordinates } = require("../client/js/coordinates");
 app.use(cors());
 app.use(express.static('Website'));
 
-const port = 8000;
+const port = 3000;
 const server = app.listen(port, listening);
 
 function listening(){
@@ -60,11 +59,6 @@ app.get('/getWeather', getWeatherData)
 function getWeatherData(req, res){
     res.send(weatherData)
 }
-/* 
-app.get('', getCoordinatesData)
-function getCoordinatesData(req, res){
-    res.send(locationData)
-} */
 
 const imageData = {}
 app.post('/addImagerData', storeImageData)

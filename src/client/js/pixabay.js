@@ -19,4 +19,4 @@ const getImage = async (city) => {
     return imageData;
 }
 
-export { getImage }
+module.exports = {getImage}

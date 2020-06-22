@@ -9,8 +9,10 @@ const getCoordinates = async(url) => {
         console.log("error",error)
     }
 }
-    
-export { getCoordinates }
+ 
+
+module.exports = {getCoordinates}
+
 
 
 

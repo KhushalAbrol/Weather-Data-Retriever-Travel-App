@@ -40,4 +40,4 @@ const getWeatherInfo = async (url) =>{
     }
 }
 
-export {getWeatherBitData}
+module.exports = {getWeatherBitData}

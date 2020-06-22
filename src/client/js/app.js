@@ -12,9 +12,10 @@ const date = document.getElementById('date').value
 const url = geoNamesBaseURL+city+geoNamesAPIKey
 
 //On Submit Button click call submit function
-document.getElementById('generate').addEventListener('click',submit);
+/* document.getElementById('generate').addEventListener('click',submit); */
 
 function submit(){
+    console.log("submit works!!!")
     //call getCoordinates() to get coordinates from API
     Client.getCoordinates(url)
     //then store coordinated and post data to server
@@ -68,3 +69,6 @@ function submit(){
     catch(error){
             alert("error"+error);
     }}
+
+
+    module.exports = {submit}

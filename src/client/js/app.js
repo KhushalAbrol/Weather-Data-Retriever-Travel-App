@@ -1,6 +1,6 @@
-const getCoordinates = required('getCoordinates.js')
-const getImage = required('pixabay.js')
-const getWeatherBitData= required('weatherbit.js')
+const getCoordinates = required('./coordinates.js')
+const getImage = required('./pixabay.js')
+const getWeatherBitData= required('./weatherbit.js')
 
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'

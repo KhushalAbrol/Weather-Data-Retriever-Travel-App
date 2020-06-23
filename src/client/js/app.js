@@ -1,7 +1,6 @@
-const function_name = require('relative_path_to_file')
-const getCoordinates = required('./coordinates.js')
-const getImage = required('./pixabay.js')
-const getWeatherBitData= required('./weatherbit.js')
+const getCoordinates = required('getCoordinates.js')
+const getImage = required('pixabay.js')
+const getWeatherBitData= required('weatherbit.js')
 
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'
@@ -12,9 +11,10 @@ const date = document.getElementById('date').value
 const url = geoNamesBaseURL+city+geoNamesAPIKey
 
 //On Submit Button click call submit function
-/* document.getElementById('generate').addEventListener('click',submit); */
+document.getElementById('generate').addEventListener('click',submit(event));
 
-function submit(){
+function submit(event){
+    event.preventDefault()
     console.log("submit works!!!")
     //call getCoordinates() to get coordinates from API
     Client.getCoordinates(url)
@@ -71,4 +71,4 @@ function submit(){
     }}
 
 
-    module.exports = {submit}
+ export {submit}

@@ -6,6 +6,30 @@ import {getWeatherBitData} from './weatherbit'
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'
 
+const location = [];
+
+const storeLocation = async() => {
+    const request = await fetch('getLocation');
+    try{
+        const locationData = await request.json();
+        const lat = locationData.body.latitude
+        const lon = locationData.body.longitude 
+        location.push(lat)
+        location.push(lon)
+        console.log(location)
+
+    }
+    catch(error){
+            alert("error"+error);
+    }
+}
+
+
+
+
+
+
+
 //On Submit Button click call submit function
 document.getElementById('generate').addEventListener('click',submit);
 
@@ -31,10 +55,11 @@ function submit(event){
 
 
 
+        
         storeLocation()
-
-
-
+console.log(location)
+const lat = location[0]
+const lon = location[1]
     //.then(res => res.json())
 /*     .then(function(res){
 
@@ -48,9 +73,8 @@ function submit(event){
         getWeatherBitData(lat, lon, date)
     
 
-    .then(function(){
+
         getImage(city)
-    })
 
     .then(function(){
         updateUI()
@@ -102,17 +126,6 @@ function submit(event){
 
 
 
-    const storeLocation = async() => {
-        const request = await fetch('getLocation');
-        try{
-            const locationData = await request.json();
-            const lat = locationData.body.latitude
-            const lon = locationData.body.longitude 
 
-        }
-        catch(error){
-                alert("error"+error);
-        }
-    }
 
  export {submit}

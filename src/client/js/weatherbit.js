@@ -5,14 +5,14 @@ function getWeatherBitData(lat, lon, date){
     const weatherURL = weatherBaseURL+"lat="+lat+"&lon="+lon+"&key="+weatherAPIKey
 
     //call getWeatherInfo to get weather information
-    getWeatherInfo(weatherURL)
+    getWeatherInfo(weatherURL, date)
     //then print it on console for now...
     .then(function(weatherData){
         
     console.log("Here is the weather data :"+weatherData);
 })}
 
-const getWeatherInfo = async (url) =>{
+const getWeatherInfo = async (url, date) =>{
     //fetch data from weatherbit API
     const res = await fetch(url)
     try{
@@ -23,7 +23,7 @@ const getWeatherInfo = async (url) =>{
         .then((weatherData) => {
             for(const i=0; i<16; i++){
                 //when data matched post data to server
-                if(weatherDate == data.data[i].valid_date)
+                if(date == weatherData.data[i].valid_date){
                     postData('/addWeatherData', {
                         maxtemp:weatherData.data[i].high_temp,
                         mintemp:weatherData.data[i].low_temp,
@@ -31,10 +31,8 @@ const getWeatherInfo = async (url) =>{
                         snow:weatherData.data[i].snow_depth,
                         cloudes:weatherData.data[i].clouds,
                         wind:weatherData.data[i].wind_spd
-            })
-        }
+            })}}})}
         //return weatherData;
-    })}
     catch(error){
         console.log("error",error);
     }

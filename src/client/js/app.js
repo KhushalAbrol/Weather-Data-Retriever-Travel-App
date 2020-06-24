@@ -28,13 +28,10 @@ function submit(event){
 
     .then(res => res.json())
     .then(function(res){
-            //get location (lat and lon) from server
-        //const location = []
-        //location = get('/getLocation', getCoordinatesData)
-        //function getCoordinatesData(req, res){
-            const lan = res.body.latitude
-            const lon = res.body.longitude
-            console.log(lan,lon)
+
+            const lat = res.body.latitude
+            const lon = req.body.longitude
+            return [lat,lon]
         })
 
     .then(function(){

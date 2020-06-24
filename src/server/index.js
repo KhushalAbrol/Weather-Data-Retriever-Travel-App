@@ -27,7 +27,7 @@ function storeCoordinates(req, res){
         city: req.body.city
     }
     locationData.push(newEntry)
-    console.log("Location Coordinates Recived!")
+    console.log("Location Coordinates Received!")
     res.send(locationData)
 }
 

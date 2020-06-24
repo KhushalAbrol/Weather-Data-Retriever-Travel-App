@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.static('dist'));
 
-const port = 3000;
+const port = 8000;
 const server = app.listen(port, listening);
 
 function listening(){
@@ -19,7 +19,7 @@ const projectData={};*/
 const locationData = {};
 
 //POST ROUTE => app.js post data here and the callback function stores it at /addCoordinates path
-app.post('/addCoordinates',storeCoordinates)
+app.post('http://localhost:8000/addCoordinates', storeCoordinates)
 function storeCoordinates(req, res){
     newEntry = {
         longitude: req.body.longitude,
@@ -28,7 +28,7 @@ function storeCoordinates(req, res){
     }
     locationData.push(newEntry)
     console.log("Location Coordinates Recived!")
-    //res.send(locationData)
+    res.send(locationData)
 }
 
 //GET ROUTE=> app.js get data from here

@@ -1,23 +1,23 @@
-const getCoordinates = required('./coordinates.js')
-const getImage = required('./pixabay.js')
-const getWeatherBitData= required('./weatherbit.js')
+import {getCoordinates} from './coordinates'
+import {getImage} from './pixabay'
+import {getWeatherBitData} from './weatherbit'
+
 
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'
 
-const city = document.getElementById('city').value
-const date = document.getElementById('date').value
-
-const url = geoNamesBaseURL+city+geoNamesAPIKey
-
 //On Submit Button click call submit function
-document.getElementById('generate').addEventListener('click',submit(event));
+document.getElementById('generate').addEventListener('click',submit);
 
 function submit(event){
+    const city = document.getElementById('city').value
+    const date = document.getElementById('date').value
+    const url = geoNamesBaseURL+city+geoNamesAPIKey
     event.preventDefault()
+    console.log(url)
     console.log("submit works!!!")
     //call getCoordinates() to get coordinates from API
-    Client.getCoordinates(url)
+    getCoordinates(url)
     //then store coordinated and post data to server
     .then((coordinates) => {
         postData('/addCoordinates', {
@@ -26,28 +26,51 @@ function submit(event){
             city: coordinates.geonames[0].name   
         })})
 
-    .then(() => {
+    .then(res => res.json())
+    .then(function(res){
             //get location (lat and lon) from server
-        const location = []
-        location = get('/getLocation', getCoordinatesData)
-        function getCoordinatesData(req, res){
-            const lat = req.body.latitude
-            const lon = req.body.longitude
-            return [lat,lon]
-        }})
+        //const location = []
+        //location = get('/getLocation', getCoordinatesData)
+        //function getCoordinatesData(req, res){
+            const lan = res.body.latitude
+            const lon = res.body.longitude
+            console.log(lan,lon)
+        })
 
     .then(function(){
 //use lon and lat from above and date to call getWeatherData function to get weather Data of a perticular Date
-        Client.getWeatherBitData(lan, lon, date)
+        getWeatherBitData(lan, lon, date)
     })
 
     .then(function(){
-        Client.getImage(city)
+        getImage(city)
     })
 
     .then(function(){
         updateUI()
     })}
+
+
+
+
+
+    const postData = async (url = '', data = {}) =>{
+        const response = await fetch(url, {
+            method:'POST',
+            credientials:'same-origin',
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify(data),
+        });
+        try{
+            const data = await response.json();
+            return data
+        }
+        catch(error){
+            alert("error"+error)
+        }
+    }
 
 //updateUI function defination:
   const updateUI = async() => {

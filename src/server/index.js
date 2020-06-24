@@ -16,7 +16,7 @@ function listening(){
 };/* 
 const projectData={};*/
 
-const locationData = [];
+var locationData = [];
 
 //POST ROUTE => app.js post data here and the callback function stores it at /addCoordinates path
 app.post('/addCoordinates', storeCoordinates)
@@ -27,7 +27,7 @@ function storeCoordinates(req, res){
         city: req.body.city
     }
     locationData.push(newEntry)
-    console.log("Location Coordinates Received!"+locationData)
+    console.log("Location Coordinates Received!"+locationData[0])
     res.send(locationData)
 }
 

@@ -6,30 +6,6 @@ import {getWeatherBitData} from './weatherbit'
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'
 
-const location = [];
-
-const storeLocation = async() => {
-    const request = await fetch('getLocation');
-    try{
-        const locationData = await request.json();
-        const lat = locationData.body.latitude
-        const lon = locationData.body.longitude 
-        location.push(lat)
-        location.push(lon)
-        console.log(location)
-
-    }
-    catch(error){
-            alert("error"+error);
-    }
-}
-
-
-
-
-
-
-
 //On Submit Button click call submit function
 document.getElementById('generate').addEventListener('click',submit);
 
@@ -43,38 +19,30 @@ function submit(event){
     //call getCoordinates() to get coordinates from API
     getCoordinates(url)
     //then store coordinated and post data to server
+    
     .then((coordinates) => {
         postData('/addCoordinates', {
             longitude: coordinates.geonames[0].lng,
             latitude: coordinates.geonames[0].lat,   
             city: coordinates.geonames[0].name   
         })})
-            
 
-
-
-
-
-        
-        storeLocation()
-console.log(location)
-const lat = location[0]
-const lon = location[1]
-    //.then(res => res.json())
-/*     .then(function(res){
+    .then(res => res.json())
+    .then(function(res){
 
             const lat = res.body.latitude
             const lon = req.body.longitude
-            return [lat,lon]
+            return {lat,lon}
         })
- */
-    
+
+    .then(function(){
 //use lon and lat from above and date to call getWeatherData function to get weather Data of a perticular Date
-        getWeatherBitData(lat, lon, date)
-    
+        getWeatherBitData(lan, lon, date)
+    })
 
-
+    .then(function(){
         getImage(city)
+    })
 
     .then(function(){
         updateUI()
@@ -95,6 +63,8 @@ const lon = location[1]
         });
         try{
             const data = await response.json();
+            console.log("here is the Data")
+            console.log(data)
             return data
         }
         catch(error){
@@ -122,10 +92,6 @@ const lon = location[1]
     catch(error){
             alert("error"+error);
     }}
-
-
-
-
 
 
  export {submit}

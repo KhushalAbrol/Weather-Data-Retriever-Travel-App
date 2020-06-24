@@ -21,23 +21,20 @@ function submit(event){
     //then store coordinated and post data to server
     
     .then((coordinates) => {
-        postData('/addCoordinates', {
+        return postData('/addCoordinates', {
             longitude: coordinates.geonames[0].lng,
             latitude: coordinates.geonames[0].lat,   
             city: coordinates.geonames[0].name   
         })})
-
-    .then(res => res.json())
     .then(function(res){
-
-            const lat = res.body.latitude
-            const lon = req.body.longitude
+            const lat = res[0].latitude
+            const lon = res[0].longitude
             return {lat,lon}
         })
 
-    .then(function(){
+    .then(function({lat,lon}){
 //use lon and lat from above and date to call getWeatherData function to get weather Data of a perticular Date
-        getWeatherBitData(lan, lon, date)
+        getWeatherBitData(lat, lon, date)
     })
 
     .then(function(){
@@ -47,10 +44,6 @@ function submit(event){
     .then(function(){
         updateUI()
     })}
-
-
-
-
 
     const postData = async (url = '', data = {}) =>{
         const response = await fetch(url, {
@@ -78,7 +71,7 @@ function submit(event){
     try{
         const allData = await request.json();
         //console.log("updateUI working")
-        //console.log(allData[0].zip);
+        console.log(allData[0].press);
         //Index takes last index of the data stored in the server
         var index = allData.length-1;
         document.getElementById('pressure').innerHTML = allData[index].press;
@@ -90,7 +83,7 @@ function submit(event){
         // console.log(allData);
     }
     catch(error){
-            alert("error"+error);
+            alert("error1"+error);
     }}
 
 

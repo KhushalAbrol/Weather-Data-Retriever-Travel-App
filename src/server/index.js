@@ -27,7 +27,7 @@ function storeCoordinates(req, res){
         city: req.body.city
     }
     locationData.push(newEntry)
-    console.log("Location Coordinates Received!"+locationData[0])
+    console.log("Location Coordinates Received!")
     res.send(locationData)
 }
 
@@ -39,7 +39,7 @@ function getLocationData(req, res){
 }
 
 
-const weatherData = []
+let weatherData = []
 
 app.post('/addWeatherData', storeWeatherData)
 function storeWeatherData(req, res){
@@ -52,11 +52,13 @@ function storeWeatherData(req, res){
     wind:res.body.windSpeed
 }
     weatherData.push(newWeatherEntry)
+    res.send(weatherData)
 }
 
 //GET ROUTE=> app.js get data from here
 app.get('/getWeather', getWeatherData)
 function getWeatherData(req, res){
+    console.log(weatherData)
     res.send(weatherData)
 }
 

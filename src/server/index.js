@@ -27,7 +27,7 @@ function storeCoordinates(req, res){
         city: req.body.city
     }
     locationData.push(newEntry)
-    console.log("Location Coordinates Received!")
+    console.log("Location Coordinates Received!"+locationData)
     res.send(locationData)
 }
 
@@ -39,7 +39,7 @@ function getLocationData(req, res){
 }
 
 
-const weatherData = {}
+const weatherData = []
 
 app.post('/addWeatherData', storeWeatherData)
 function storeWeatherData(req, res){

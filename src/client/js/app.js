@@ -25,19 +25,28 @@ function submit(event){
             latitude: coordinates.geonames[0].lat,   
             city: coordinates.geonames[0].name   
         })})
+            
 
-    .then(res => res.json())
-    .then(function(res){
+
+
+
+
+        storeLocation()
+
+
+
+    //.then(res => res.json())
+/*     .then(function(res){
 
             const lat = res.body.latitude
             const lon = req.body.longitude
             return [lat,lon]
         })
-
-    .then(function(){
+ */
+    
 //use lon and lat from above and date to call getWeatherData function to get weather Data of a perticular Date
-        getWeatherBitData(lan, lon, date)
-    })
+        getWeatherBitData(lat, lon, date)
+    
 
     .then(function(){
         getImage(city)
@@ -90,5 +99,20 @@ function submit(event){
             alert("error"+error);
     }}
 
+
+
+
+    const storeLocation = async() => {
+        const request = await fetch('getLocation');
+        try{
+            const locationData = await request.json();
+            const lat = locationData.body.latitude
+            const lon = locationData.body.longitude 
+
+        }
+        catch(error){
+                alert("error"+error);
+        }
+    }
 
  export {submit}

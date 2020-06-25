@@ -12,6 +12,17 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+    devServer:{
+        //webpack-dev-server setup
+        host:'localhost',
+        port: 8080,
+        proxy:{
+            context:() =>true,
+            target: "http://localhost:7000/",
+            secure:false
+
+        }
+    },
     module: {
         rules: [
             {

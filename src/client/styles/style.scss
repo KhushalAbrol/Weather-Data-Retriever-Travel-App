@@ -1,6 +1,7 @@
 body{
     background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding:0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .headline{
     text-shadow: 3px 3px 6px rgb(104, 104, 104);
@@ -15,7 +16,7 @@ body{
     grid-template-areas: 
     "head"
     "main";
-    height:100%;
+    height:100vh;
     width:80vw;
     min-height: 500px;
     margin:auto;
@@ -47,25 +48,24 @@ body{
 
 #image{
     grid-area: image;
-    background-color: thistle;
     margin:5px auto;
     overflow: hidden;
     width:100%;
     height:90%;
-/*     min-height:35vh;
-    min-width:35vh; */
+    margin-top:5%;
+
 }
 
 #image img{
     background-position: center;
     background-repeat: no-repeat;
-    width:35vh;
-    height:35vh;
+    width:100%;
+    height:100%;
 
     
 }
 
-.zip{
+.data{
     grid-area:zip ; 
 }
 .feel{
@@ -190,112 +190,106 @@ button:focus {
 } 
 
 /* ---------------------------------------------------------------------------------- */
-@media(max-width:600px){
-    body{background-color: turquoise;}
-  /*   body{
-        background: #fffff8;
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    } */
-   /*  .headline{
-        text-shadow: 3px 3px 6px rgb(104, 104, 104);
-        grid-area: head;
-        font-size: 3rem;
-        margin:auto;
-    } */
-    
-    #app{
-/*         display: grid;
-        grid-template-rows: 200vh 80vh;
-        grid-template-areas: 
-        "head"
-        "main";
-        height:100%;
-        width:100vw;
-        min-height: 500px;
-        margin:auto; */
-        background-color: tomato;
+@media(max-width:600px){  
+    body{
+        font-size: 20px;
+        width:90vw;
+    }
+#app{
+    display: grid;
+    font-size: smaller;
+    grid-template-rows: 8vh 92vh;
+    grid-template-areas: 
+    "head"
+    "main";
+    height:98vh;
+    width:100vw;
+    min-height: 50px;
+    margin:0; 
+    overflow: hidden;    
     }
     
     #main{
-/*         width:80vw;
+        width:100vw;
         height:100vh;
+        padding:2%;
+        margin:0 10px;
+        justify-self: center;
         grid-area: main;
         display: grid;
-        grid-template-columns: 2% 45% 6% 45% 2%;
-        grid-template-rows: 25% 20% 24% 10% 1%;
+        grid-template-rows: 12% 5% 32% 25% 10%;
+        grid-template-columns: 90%;
         grid-template-areas: 
-        "b zip m entry c"
-        "b image m entry c"
-        "b image m entry c"
-        "b but but but c"
-        "b a a a c"; */
+        "data"
+        ".."
+        "entry"
+        "image"
+        "but"; 
     }
     
     #image{
-   /*      grid-area: image;
-        background-color: thistle;
-        margin:5px auto;
-        overflow: hidden;
-        width:100%;
-        height:90%;
-    /*     min-height:35vh;
-        min-width:35vh; */ 
-    }
-    
-    #image img{
+      grid-area: image;
 
+     height:200px;
+     width:200px;
+    }
+        
+    .data{
+        grid-area:data;
+        display: grid;
+        grid-template-columns: 2% 45% 6% 45% 2%;
+        grid-template-rows: 40px 20px;
+        grid-template-areas: 
+        "a label label label c"
+        "a city b date c";
         
     }
-    
-    .zip{
-    
-    }
-    .feel{
 
-    }
-    .entry{
+    #cityEntry{grid-area: city;font-size: 20px;}
+    #dateEntry{grid-area: date;font-size: 20px;}
+    label{grid-area: label;
+    font-size: 20px};
 
-      /*   display: grid;
-        grid-template-rows:10% 90% ;
+     .entry{
+        grid-area: entry;
+        margin-top: 10%;
+        width:80%;
+        height:110%;
+        display: grid;
+        grid-template-rows:7% 90% ;
         grid-template-areas: 
         "ti"
-        "en"; */}
+        "en";}
     
         .title{
-     /*        grid-area: ti;
-    /*         background-color: lawngreen; */
-           /*  margin:auto;
-            font-size: 2rem;
-            color:rgb(80, 80, 80);
-            text-shadow: 3px 3px 6px rgb(122, 122, 122);
-            padding: auto; */ 
+        grid-area: ti;
+        font-size: 18px;
+        margin-top:-5px;
         }
         #entryHolder{
-      /*       padding-top:2rem;
-            grid-area: en;
-            display: grid;
-            grid-template-columns:48% 4% 48% ;
-            grid-template-areas: 
-            "pa ma va";  */
-        }
-    
-       /*  #parameter{grid-area:pa;}
-        #value{grid-area: va;}
-     */
-    
+            grid-area: en;    
     .but{
-
+        grid-area: but;
+        height:10px;
     }
-    /*  Basic Styling To Override Default For Basic HTML Elements */
-    label{
 
-    }
+ 
     input{
+        width:100%;
+        height:30px;
+        display:block;
+        width:100%;
+        border-radius: 5px;
+        background:#ffffff;
+        color: Black;
+        text-align: center;
+        font-size: 15px;
+        border: none;
+        -moz-box-shadow:    0 0 ;
+        -webkit-box-shadow: 0 0 ;
+        box-shadow:         0 0 ;
 
     }
-    button{
-
-    }
 
 
-}
+}}

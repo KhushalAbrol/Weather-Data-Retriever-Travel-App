@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Travel App</title>
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <!-- <link rel="stylesheet" href="style.css"> -->
@@ -12,10 +13,10 @@
         Travel App
       </div>
       <div id="main">
-        <div class ="holder zip">
-          <label for="zip">Enter Zipcode here:</label>
-          <input type="text" id="city" placeholder="Please Enter City Here"><br>
-          <input type="text" id="date" placeholder="YYYY-MM-DD">
+        <div class ="holder data">
+          <label id ="label" for="data">Enter City And Date here:</label>
+          <input type="text" id="cityEntry" placeholder="Please Enter City Here"><br>
+          <input type="date" id="dateEntry" name="date">
         </div>
         <div id="image">
           <img id="img" src="" alt="">
@@ -35,7 +36,7 @@
                 <div id = "wind-speed.">Wind Speed:</div>
               </div>
               <div id="value">
-                <div id = "city"></div>
+                <div id = "city-name"></div>
                 <div id = "pressure"></div>
                 <div id = "temp-min"></div> 
                 <div id = "temp-max"></div>

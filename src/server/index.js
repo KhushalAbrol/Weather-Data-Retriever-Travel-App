@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.static('dist'));
 
-const port = 8000;
+const port = 7000;
 const server = app.listen(port, listening);
 
 function listening(){
@@ -41,30 +41,26 @@ function getLocationData(req, res){
 
 let weatherData = []
 
-app.post('/addWeatherData', storeWeatherData)
+app.post('/addWeather', storeWeatherData)
 function storeWeatherData(req, res){
     newWeatherEntry = {
-    maxtemp:res.body.maxTemp,
-    mintemp:res.body.minTemp,
-    press:res.body.press,
-    snow:res.body.snowDepth,
-    cloudes:res.body.cloudes,
-    wind:res.body.windSpeed
+    maxTemp:req.body.maxTemp,
+    minTemp:req.body.minTemp,
+    press:req.body.press,
+    snow:req.body.snow,
+    cloudes:req.body.cloudes,
+    wind:req.body.wind,
+    name:req.body.name
 }
     weatherData.push(newWeatherEntry)
+    console.log("Weather Data Received!")
+    console.log("-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-'-_-")
     res.send(weatherData)
 }
 
-//GET ROUTE=> app.js get data from here
+/* //GET ROUTE=> app.js get data from here
 app.get('/getWeather', getWeatherData)
 function getWeatherData(req, res){
-    console.log(weatherData)
+    console.log(weatherData+"weatherData")
     res.send(weatherData)
-}
-
-const imageData = {}
-app.post('/addImagerData', storeImageData)
-function storeImageData(req, res){
-    imageData.image = req.body.imageURL
-    console.log("Image Stored")
-}
+} */

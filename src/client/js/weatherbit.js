@@ -1,4 +1,56 @@
-function getWeatherBitData(lat, lon, date){
+const getWeatherBitData = async(url) => {
+    const res = await fetch(url)
+    try{
+        const weatherData = await res.json();
+        console.log(weatherData)
+        return weatherData
+    }
+    catch(error){
+        console.log("weatherbit.js"+error)
+    }
+
+}
+
+module.exports = {getWeatherBitData}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* function getWeatherBitData(lat, lon, date){
 
     const weatherBaseURL="https://api.weatherbit.io/v2.0/forecast/daily?"
     const weatherAPIKey="75c3aa19fc1d4994816b265d6f274b57"
@@ -24,13 +76,14 @@ const getWeatherInfo = async (url, date) =>{
             for(let i=0; i<16; i++){
                 //when data matched post data to server
                 if(date == weatherData.data[i].valid_date){
+                    console.log("weather date data:"+weatherData.data[i].valid_date)
                     return postData('/addWeatherData', {
-                        maxtemp:weatherData.data[i].high_temp,
-                        mintemp:weatherData.data[i].low_temp,
-                        press:weatherData.data[i].pres,
-                        snow:weatherData.data[i].snow_depth,
-                        cloudes:weatherData.data[i].clouds,
-                        wind:weatherData.data[i].wind_spd
+                        maxtemp:weatherData.data[0].high_temp,
+                        mintemp:weatherData.data[0].low_temp,
+                        press:weatherData.data[0].pres,
+                        snow:weatherData.data[0].snow_depth,
+                        cloudes:weatherData.data[0].clouds,
+                        wind:weatherData.data[0].wind_spd
             })}}}
         //return weatherData;
     catch(error){
@@ -49,13 +102,13 @@ const postData = async(url = '', data = {})=>{
 })
     try{
         const data = await response.json();
-        console.log("here is the Data")
+        console.log("here is the weather Data")
         console.log(data)
         return data
     }
     catch(error){
-        alert("error2"+error)
+        console.log("error2"+error)
 }}
 
 
-module.exports = {getWeatherBitData}
+module.exports = {getWeatherBitData} */

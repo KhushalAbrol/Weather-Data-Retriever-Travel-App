@@ -5,6 +5,9 @@ import { submit} from './js/app'
 
 import './styles/style.scss'
 
+import Loading from './assets/loading.gif'
+import notFound from './assets/notFound.gif'
+
 
 
 
@@ -12,5 +15,7 @@ export {
     getWeatherBitData,
     getCoordinates,
     getImage,
-    submit
+    submit,
+    Loading,
+    notFound
 }

@@ -1,5 +1,5 @@
-pixabayBaseURL= "https://pixabay.com/api/?"
-pixabayAPIKey = "17156512-d3b9b7fb79bb45c20f4b5b9e6"
+const pixabayBaseURL= "https://pixabay.com/api/?"
+const pixabayAPIKey = "17156512-d3b9b7fb79bb45c20f4b5b9e6"
 
 
 const getImage = async (city) => {

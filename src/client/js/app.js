@@ -1,7 +1,8 @@
 import {getCoordinates} from './coordinates'
 import {getImage} from './pixabay'
 import {getWeatherBitData} from './weatherbit'
-
+import Loading from '../assets/loading.gif'
+import notFound from '../assets/notFound.gif'
 
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'
@@ -14,6 +15,10 @@ document.getElementById('generate').addEventListener('click',submit);
 
 function submit(event){
     event.preventDefault()
+    console.log(Loading)
+    
+    loading()
+    document.getElementById('img').src = Loading
     const city = document.getElementById('cityEntry').value
     const date = document.getElementById('dateEntry').value
     //check for empty field
@@ -21,18 +26,17 @@ function submit(event){
         alert("You have to Enter City and Date!!")
         return
     }
-
+    clearUI()
     const url = geoNamesBaseURL+city+geoNamesAPIKey
     //call getCoordinates() to get coordinates from API
     getCoordinates(url)
     //then store coordinated and post data to server
     .then((coordinates) => {
         if(coordinates.totalResultsCount==0)
-            {alert("Invalid Location")
-            document.getElementById('city').value=""
-            const img = document.getElementById('img')
-            /* img.src= "src\client\assets\oops.jpg" */
-            clearUI();
+            {
+            document.getElementById('img').src= notFound
+            alert("Invalid Location")
+            clearUI(1);
             }
         return postData('/addCoordinates', {
             longitude: coordinates.geonames[0].lng,
@@ -80,11 +84,13 @@ function submit(event){
                 return res[index].name
             })
             .then(function(res){
+                console.log(res,"'''''''")
                 getImage(res)
                 .then(function(res){                  
                     const img = document.getElementById('img')
                     img.src= res.hits[Math.floor(Math.random()*10)].largeImageURL
-                    img.alt=res.data.city_name
+                    img.alt=res.data.city_name 
+                  /*   img.src = Loading */
     })})})}
 
     const postData = async (url = '', data = {}) =>{
@@ -111,23 +117,30 @@ function submit(event){
 const updateUI = async(res,index) => {
     try{
         if(res[index].press=="Weather Data Not Available!")
-            {document.getElementById('value').style.color ="red"}
+        {
+            document.getElementById('value').style.color ="red"
+            document.getElementById('img').src= notFound  
+        }
         else
             {document.getElementById('value').style.color ="royalblue"}
-            const cityName =res[index].name
+             const cityName = res[index].name
             //to use the last element stored in array we use index
-            document.getElementById('city-name').innerHTML = cityName;
+            document.getElementById('city-name').innerHTML = res[index].name;
             document.getElementById('pressure').innerHTML = res[index].press;
             document.getElementById('temp-min').innerHTML = res[index].minTemp;
             document.getElementById('temp-max').innerHTML = res[index].maxTemp;
             document.getElementById('snow-depth').innerHTML = res[index].snow;
             document.getElementById('cloudes').innerHTML = res[index].cloudes;
-            document.getElementById('wind-speed').innerHTML = res[index].wind;       
+            document.getElementById('wind-speed').innerHTML = res[index].wind;   
+            document.getElementById('img').src=notFound
+            console.log(cityName+"???")
          return{cityName}}
     catch(error){console.log("error1"+error)}}
 
-function clearUI()
+function clearUI(a)
 {
+    document.getElementById('cityEntry').value="";
+    
     document.getElementById('pressure').innerHTML = "";
     document.getElementById('temp-min').innerHTML = "";
     document.getElementById('temp-max').innerHTML = "";
@@ -135,6 +148,15 @@ function clearUI()
     document.getElementById('cloudes').innerHTML = "";
     document.getElementById('wind-speed').innerHTML = "";
 }
+
+function loading()
+{
+/*     const load ='Loading. Please wait...'
+    document.getElementById('city').innerHTML = load ;
+    document.getElementById('img').src = Loading
+} */
+}
+
  export {submit}
  export {updateUI}
  export {postData}

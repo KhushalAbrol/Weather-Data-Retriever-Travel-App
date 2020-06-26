@@ -15,3 +15,13 @@ describe('GET endpoints', () => {
     position: {
       x: expect.any(Number)
     } */
+
+    import {getImage} from '../client/js/pixabay'
+
+    describe('Get API Endpoint',() =>{
+      it('should return object', async (mumbai) =>{
+        expect(getImage).toEqual(expect.objectContaining({
+          hits: expect.any(Array)
+        }))
+      })
+    })

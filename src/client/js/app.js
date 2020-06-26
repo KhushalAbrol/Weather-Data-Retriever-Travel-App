@@ -3,6 +3,7 @@ import {getImage} from './pixabay'
 import {getWeatherBitData} from './weatherbit'
 import Loading from '../assets/loading.gif'
 import notFound from '../assets/notFound.gif'
+import missed from '../assets/missed.gif'
 
 const geoNamesBaseURL = 'http://api.geonames.org/searchJSON?q=';
 const geoNamesAPIKey = '&username=khushal_abrol'
@@ -18,14 +19,16 @@ function submit(event){
     console.log(Loading)
     
     loading()
-    document.getElementById('img').src = Loading
+    
     const city = document.getElementById('cityEntry').value
     const date = document.getElementById('dateEntry').value
     //check for empty field
     if(city == "" || date ==""){
+        document.getElementById('img').src = missed
         alert("You have to Enter City and Date!!")
         return
     }
+    document.getElementById('img').src = Loading
     clearUI()
     const url = geoNamesBaseURL+city+geoNamesAPIKey
     //call getCoordinates() to get coordinates from API
@@ -88,8 +91,6 @@ function submit(event){
                 .then(function(res){                  
                     const img = document.getElementById('img')
                     img.src= res.hits[Math.floor(Math.random()*10)].largeImageURL
-                    img.alt=res.data.city_name 
-                  /*   img.src = Loading */
     })})})}
 
     const postData = async (url = '', data = {}) =>{

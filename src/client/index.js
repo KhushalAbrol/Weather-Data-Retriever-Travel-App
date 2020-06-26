@@ -7,6 +7,7 @@ import './styles/style.scss'
 
 import Loading from './assets/loading.gif'
 import notFound from './assets/notFound.gif'
+import missed from './assets/missed.gif'
 
 
 
@@ -17,5 +18,6 @@ export {
     getImage,
     submit,
     Loading,
-    notFound
+    notFound,
+    missed
 }

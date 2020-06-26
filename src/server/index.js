@@ -58,9 +58,4 @@ function storeWeatherData(req, res){
     res.send(weatherData)
 }
 
-/* //GET ROUTE=> app.js get data from here
-app.get('/getWeather', getWeatherData)
-function getWeatherData(req, res){
-    console.log(weatherData+"weatherData")
-    res.send(weatherData)
-} */
+module.exports = {storeWeatherData}

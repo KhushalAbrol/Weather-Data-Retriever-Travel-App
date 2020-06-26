@@ -84,7 +84,6 @@ function submit(event){
                 return res[index].name
             })
             .then(function(res){
-                console.log(res,"'''''''")
                 getImage(res)
                 .then(function(res){                  
                     const img = document.getElementById('img')
@@ -133,7 +132,6 @@ const updateUI = async(res,index) => {
             document.getElementById('cloudes').innerHTML = res[index].cloudes;
             document.getElementById('wind-speed').innerHTML = res[index].wind;   
             document.getElementById('img').src=notFound
-            console.log(cityName+"???")
          return{cityName}}
     catch(error){console.log("error1"+error)}}
 

@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
@@ -15,7 +16,7 @@ module.exports = {
     devServer:{
         //webpack-dev-server setup
         host:'localhost',
-        port: 8080,
+        port: 7000,
         proxy:{
             context:() =>true,
             target: "http://localhost:7000/",
@@ -33,7 +34,11 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-           }
+           },
+           {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: ['file-loader'],
+        }
         ]
     },
     plugins: [
@@ -49,6 +54,10 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
+        }),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
+        }),
     ]
 }

@@ -59,3 +59,4 @@ function storeWeatherData(req, res){
 }
 
 module.exports = {storeWeatherData}
+module.exports = {storeCoordinates}

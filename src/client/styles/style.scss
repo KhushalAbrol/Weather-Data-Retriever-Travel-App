@@ -109,7 +109,16 @@ body{
 
 .but{
     grid-area: but;
+    height:10px;
+    display:grid;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-areas: "gen a pri";
+
 }
+
+#generate{grid-area: gen;}
+#print{grid-area: pri;display:none;}
+
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
@@ -190,53 +199,57 @@ button:focus {
 } 
 
 /* ---------------------------------------------------------------------------------- */
-@media(max-width:600px){  
+@media(max-width:800px){  
     body{
         font-size: 20px;
-        width:90vw;
+        height: 150vh;
+        width:100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 #app{
     display: grid;
     font-size: smaller;
-    grid-template-rows: 8vh 92vh;
+    grid-template-rows: 8vh 142vh;
     grid-template-areas: 
     "head"
     "main";
-    height:98vh;
+    height:100%;
     width:100vw;
     min-height: 50px;
-    margin:0; 
+    margin:-2% 0 0 -2%; 
     overflow: hidden;    
     }
     
     #main{
-        width:100vw;
+        width:105vw;
         height:100vh;
-        padding:2%;
-        margin:0 10px;
+        padding:0;
+        margin:0 0 0 8vw;
         justify-self: center;
         grid-area: main;
         display: grid;
-        grid-template-rows: 12% 5% 32% 25% 10%;
+        grid-template-rows: 12% 5% 32% 70% 25vh;
         grid-template-columns: 90%;
         grid-template-areas: 
         "data"
         ".."
         "entry"
-        "image"
+        "im"
         "but"; 
     }
     
     #image{
-      grid-area: image;
-
-     height:200px;
-     width:200px;
+        grid-area: im;
+        margin-top: 40%;
+        height:200px;
+        width:200px;
     }
         
     .data{
         grid-area:data;
         display: grid;
+        width:100%;
         grid-template-columns: 2% 45% 6% 45% 2%;
         grid-template-rows: 40px 20px;
         grid-template-areas: 
@@ -252,8 +265,9 @@ button:focus {
 
      .entry{
         grid-area: entry;
-        margin-top: 10%;
-        width:80%;
+        padding: 35px;
+        margin:10% 0 0 -4vw;
+        width:100%;
         height:110%;
         display: grid;
         grid-template-rows:7% 90% ;
@@ -268,9 +282,27 @@ button:focus {
         }
         #entryHolder{
             grid-area: en;    
-    .but{
+
+    .but{     
         grid-area: but;
-        height:10px;
+        display:grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 10vw 5px 10vh;
+        grid-template-areas: 
+        "gen"
+        "a" 
+        "pri";
+    }
+    
+    #generate{
+        grid-area: gen;
+        background-color: violet;
+        width: 100vw;
+        font-size: 10px;
+    }
+    #print{
+        grid-area: pri;
+        /* display:none; */
     }
 
  

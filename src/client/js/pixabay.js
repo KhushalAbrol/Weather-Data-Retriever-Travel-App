@@ -7,7 +7,7 @@ const getImage = async (city) => {
     const response = await fetch(URL);
     try {
         const imageData = await response.json()
-            console.log(imageData)
+            console.log(imageData+"imageData")
             return imageData
         }
     catch (error) {

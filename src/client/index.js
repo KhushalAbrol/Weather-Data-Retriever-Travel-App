@@ -5,7 +5,7 @@ import { submit} from './js/app'
 
 import './styles/style.scss'
 
-import Loading from './assets/loading.gif'
+import loading from './assets/loading.gif'
 import notFound from './assets/notFound.gif'
 import missed from './assets/missed.gif'
 
@@ -17,7 +17,7 @@ export {
     getCoordinates,
     getImage,
     submit,
-    Loading,
+    loading,
     notFound,
     missed
 }

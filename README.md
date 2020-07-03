@@ -56,4 +56,5 @@ This Project uses (Webpack)[webpack.js.org] and it contains:
 - Webpack Loaders
 - Webpack Modes
 
-
+### Additional Feature:
+You can also print the data displayed on the screen. This function is performed by printPDF function. 
